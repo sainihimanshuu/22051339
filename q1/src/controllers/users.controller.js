@@ -1,6 +1,10 @@
 const usersWithHighesNoOfPosts = [];
 
-const updatePostsWithMostComments = async () => {
+//first get all the users
+// then iterate over the users and get posts for each user
+// then iterate over the post and update usersWithHighesNoOfPosts
+
+const updateUsersWithHighestNoOfPosts = async () => {
   const userDataResponse = await fetch(
     "http://20.244.56.144/evaluation-service/users",
     {
@@ -44,8 +48,11 @@ const updatePostsWithMostComments = async () => {
   }
 };
 
-setInterval(updatePostsWithMostComments, 30000);
+updateUsersWithHighestNoOfPosts();
+//polling to get latest data.
+setInterval(updateUsersWithHighestNoOfPosts, 30000);
 
+//iterate over the usersWithHighesNoOfPosts and return the userId(s)
 const getTopUsers = (req, res) => {
   const topUsers = usersWithHighesNoOfPosts.map((user) => user.userId);
   return res.status(200).json({
