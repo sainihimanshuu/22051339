@@ -1,0 +1,3 @@
+const getTopUsers = () => {};
+
+export { getTopUsers };
